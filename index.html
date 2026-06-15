@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP SKILLS - Ultimate NCERT Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e2b04a;
+            --accent2: #c8963e;
+            --gold: #d4a849;
+            --gold-light: #f0d78c;
+            --bg: #fafaf8;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #555;
+            --border: #e8e5df;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:#c9c4b8; border-radius:20px; }
+
+        /* ─── TOP BAR ─── */
+        .top-bar {
+            background: var(--primary);
+            color:#fff; padding:6px 0; font-size:0.8rem;
+            letter-spacing:0.5px; text-align:center; font-weight:500;
+        }
+        .top-bar span { color:var(--accent); font-weight:700; }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            background: var(--card); border-bottom:1px solid var(--border);
+            position:sticky; top:0; z-index:1000; backdrop-filter:blur(20px);
+            background:rgba(255,255,255,0.92); transition:var(--transition);
+            box-shadow:var(--shadow-sm);
+        }
+        .nav-inner {
+            max-width:1300px; margin:0 auto; display:flex; align-items:center;
+            justify-content:space-between; padding:12px 24px;
+        }
+        .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+        .logo-icon {
+            width:44px; height:44px; background:linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius:12px; display:flex; align-items:center; justify-content:center;
+            color:#fff; font-weight:900; font-size:1.3rem; box-shadow:0 4px 15px rgba(212,168,73,0.35);
+        }
+        .logo-text {
+            font-family:var(--font-heading); font-weight:800; font-size:1.6rem;
+            color:var(--primary); letter-spacing:-0.5px;
+        }
+        .logo-text span { color:var(--accent); }
+        .nav-links { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+        .nav-links a {
+            text-decoration:none; color:var(--text); font-weight:500;
+            padding:8px 16px; border-radius:30px; transition:var(--transition);
+            font-size:0.9rem; white-space:nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active { background:#f5f3ed; color:var(--accent2); font-weight:600; }
+        .nav-cta {
+            background:var(--accent)!important; color:#fff!important; font-weight:600!important;
+            box-shadow:0 4px 14px rgba(212,168,73,0.3);
+        }
+        .nav-cta:hover { background:var(--accent2)!important; }
+        .nav-user { display:flex; align-items:center; gap:8px; font-weight:600; font-size:0.9rem; color:var(--primary); }
+        .logout-btn {
+            background:none; border:1px solid #e0d9c8; padding:6px 14px; border-radius:20px;
+            cursor:pointer; font-size:0.8rem; font-weight:500; transition:var(--transition); color:#666;
+        }
+        .logout-btn:hover { border-color:#c94d4d; color:#c94d4d; }
+        .mobile-menu-btn { display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text); padding:8px; }
+
+        /* ─── HERO ─── */
+        .hero {
+            background:linear-gradient(170deg, #fefdf9 0%, #fdf8ed 40%, #fefdf9 100%);
+            padding:60px 24px 70px; text-align:center; position:relative; overflow:hidden;
+        }
+        .hero::before {
+            content:''; position:absolute; top:-120px; right:-120px;
+            width:400px; height:400px; background:radial-gradient(circle, rgba(212,168,73,0.1) 0%, transparent 70%);
+            border-radius:50%; pointer-events:none;
+        }
+        .hero::after {
+            content:''; position:absolute; bottom:-100px; left:-100px;
+            width:350px; height:350px; background:radial-gradient(circle, rgba(26,26,46,0.04) 0%, transparent 70%);
+            border-radius:50%; pointer-events:none;
+        }
+        .hero-badge {
+            display:inline-block; background:#fff; border:1px solid #e8e0cc;
+            padding:8px 20px; border-radius:30px; font-weight:600; font-size:0.85rem;
+            color:var(--accent2); letter-spacing:1px; text-transform:uppercase; margin-bottom:20px;
+        }
+        .hero h1 {
+            font-family:var(--font-heading); font-size:3.2rem; font-weight:800;
+            color:var(--primary); max-width:750px; margin:0 auto 16px; line-height:1.2;
+        }
+        .hero h1 span {
+            background:linear-gradient(135deg, var(--accent), #b8861e);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p { font-size:1.15rem; color:#666; max-width:650px; margin:0 auto 30px; }
+        .hero-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .btn {
+            padding:13px 28px; border-radius:30px; font-weight:600; font-size:0.95rem;
+            cursor:pointer; text-decoration:none; display:inline-flex; align-items:center;
+            gap:8px; transition:var(--transition); border:none; font-family:var(--font-body);
+        }
+        .btn-primary { background:var(--accent); color:#fff; box-shadow:0 8px 25px rgba(212,168,73,0.35); }
+        .btn-primary:hover { background:var(--accent2); transform:translateY(-2px); }
+        .btn-outline { background:#fff; color:var(--primary); border:2px solid #e0d9c8; }
+        .btn-outline:hover { border-color:var(--accent); background:#fefdf9; transform:translateY(-2px); }
+        .hero-note {
+            margin-top:25px; font-size:0.8rem; color:#888; background:#fff;
+            display:inline-block; padding:6px 18px; border-radius:20px; border:1px solid #e8e5df;
+        }
+        .hero-stats { display:flex; gap:40px; justify-content:center; margin-top:40px; flex-wrap:wrap; }
+        .stat-item { text-align:center; }
+        .stat-num { font-family:var(--font-heading); font-size:2.2rem; font-weight:800; color:var(--primary); }
+        .stat-label { font-size:0.85rem; color:#777; margin-top:4px; }
+
+        /* ─── SECTIONS ─── */
+        .section { max-width:1300px; margin:0 auto; padding:50px 24px; }
+        .section-header { text-align:center; margin-bottom:40px; }
+        .section-header .tag {
+            display:inline-block; font-weight:700; font-size:0.8rem; letter-spacing:1.5px;
+            text-transform:uppercase; color:var(--accent2); margin-bottom:8px;
+        }
+        .section-header h2 { font-family:var(--font-heading); font-size:2.3rem; font-weight:700; color:var(--primary); }
+        .section-header p { color:#777; font-size:1rem; }
+
+        .class-selector { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:30px; }
+        .class-btn {
+            padding:10px 20px; border-radius:30px; border:2px solid #e0d9c8; background:#fff;
+            cursor:pointer; font-weight:600; font-size:0.9rem; transition:var(--transition); color:#555;
+        }
+        .class-btn:hover { border-color:var(--accent); color:var(--accent2); background:#fefdf9; }
+        .class-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); box-shadow:var(--shadow); }
+
+        .subject-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:16px; }
+        .subject-card {
+            background:var(--card); border-radius:var(--radius); padding:22px 18px; cursor:pointer;
+            border:1px solid var(--border); transition:var(--transition); text-align:center; box-shadow:var(--shadow-sm);
+        }
+        .subject-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:#d4c9a8; }
+        .subject-card .icon {
+            width:48px; height:48px; border-radius:14px; display:flex; align-items:center;
+            justify-content:center; margin:0 auto 12px; font-size:1.3rem; font-weight:700;
+        }
+        .icon-maths { background:#eef2ff; color:#4f5de4; } .icon-science { background:#e8faf0; color:#2d9d5a; }
+        .icon-sst { background:#fff5e8; color:#e08e2c; } .icon-english { background:#fde8f0; color:#c94d7c; }
+        .icon-hindi { background:#fff0e0; color:#d4783c; } .icon-physics { background:#e3f0ff; color:#3b6fc2; }
+        .icon-chemistry { background:#f5e6ff; color:#7b3fc4; } .icon-biology { background:#e6faf0; color:#2d8c5a; }
+        .subject-card h4 { font-weight:700; font-size:0.95rem; color:var(--primary); }
+        .subject-card .badge { font-size:0.7rem; background:#f5f3ed; padding:3px 10px; border-radius:12px; color:#888; }
+
+        /* ─── GAMES SECTION ─── */
+        .games-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:16px; }
+        .game-card {
+            background:var(--card); border-radius:var(--radius); padding:24px; border:1px solid var(--border);
+            box-shadow:var(--shadow-sm); transition:var(--transition); cursor:pointer; text-align:center;
+        }
+        .game-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:#d4c9a8; }
+        .game-card i { font-size:2rem; color:var(--accent); margin-bottom:12px; }
+        .game-card h4 { font-weight:700; color:var(--primary); margin-bottom:6px; }
+        .game-card p { font-size:0.85rem; color:#777; }
+
+        /* ─── SOCIAL SECTION ─── */
+        .social-section {
+            background:linear-gradient(135deg, #fffbe6, #fdf8ed);
+            padding:50px 24px; text-align:center;
+        }
+        .social-grid {
+            display:flex; flex-wrap:wrap; gap:24px; justify-content:center; margin-top:30px;
+        }
+        .social-card {
+            background:#fff; border-radius:var(--radius); padding:30px 20px; flex:1 1 250px;
+            max-width:300px; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+            transition:var(--transition);
+        }
+        .social-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+        .social-card i { font-size:2.5rem; color:var(--accent); margin-bottom:12px; }
+        .social-card h4 { font-weight:700; color:var(--primary); }
+        .social-card p { font-size:0.85rem; color:#666; margin:8px 0; }
+        .social-card .social-btn {
+            display:inline-block; padding:10px 22px; border-radius:30px; background:var(--accent);
+            color:#fff; font-weight:600; text-decoration:none; transition:var(--transition); margin-top:8px;
+        }
+        .social-card .social-btn:hover { background:var(--accent2); }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonial-scroll {
+            display:flex; gap:16px; overflow-x:auto; padding:10px 0; scroll-snap-type:x mandatory;
+        }
+        .testimonial-card {
+            min-width:280px; background:#fff; border-radius:var(--radius); padding:20px;
+            border:1px solid var(--border); box-shadow:var(--shadow-sm); scroll-snap-align:start;
+        }
+        .testimonial-card .author { font-weight:700; color:var(--primary); margin-top:12px; }
+        .testimonial-card .role { font-size:0.8rem; color:#888; }
+
+        /* ─── MODALS ─── */
+        .modal-overlay {
+            position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:2000;
+            display:flex; align-items:center; justify-content:center;
+            opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+        }
+        .modal-overlay.show { opacity:1; pointer-events:all; }
+        .modal {
+            background:#fff; border-radius:var(--radius); padding:30px; max-width:500px; width:90%;
+            box-shadow:var(--shadow-lg); position:relative; max-height:90vh; overflow-y:auto;
+        }
+        .modal .close-btn {
+            position:absolute; top:12px; right:14px; background:none; border:none;
+            font-size:1.3rem; cursor:pointer; color:#888; padding:4px 8px; border-radius:50%;
+        }
+        .modal .close-btn:hover { background:#f5f5f5; color:#333; }
+
+        /* ─── FOOTER ─── */
+        .footer { background:var(--primary); color:#ccc; padding:50px 24px 30px; margin-top:40px; }
+        .footer-inner { max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; }
+        .footer h4 { color:#fff; margin-bottom:14px; font-family:var(--font-heading); }
+        .footer a { color:#aaa; text-decoration:none; display:block; margin:6px 0; font-size:0.85rem; }
+        .footer a:hover { color:var(--accent); }
+        .footer-bottom { text-align:center; padding-top:30px; margin-top:30px; border-top:1px solid #333; font-size:0.8rem; color:#777; }
+
+        @media (max-width:768px) {
+            .hero h1 { font-size:2rem; }
+            .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0;
+                background:#fff; border-bottom:1px solid var(--border); padding:16px; box-shadow:var(--shadow-lg); }
+            .nav-links.show { display:flex; }
+            .mobile-menu-btn { display:block; }
+            .subject-grid { grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); }
+            .games-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">🚀 <span>AP SKILLS</span> — Ultimate NCERT Hub | Join 50K+ Learners!</div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo"><div class="logo-icon">AP</div><div class="logo-text">AP <span>SKILLS</span></div></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="#books">📚 Books</a><a href="#solutions">✅ Solutions</a><a href="#exemplar">⭐ Exemplar</a>
+                <a href="#quizzes">🎯 Quizzes</a><a href="#games">🎮 Games</a><a href="#discussion">💬 Discuss</a>
+                <span id="userArea"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">✦ India's #1 NCERT Platform ✦</div>
+        <h1>Learn, Play & Grow with <span>AP SKILLS</span></h1>
+        <p>Access all NCERT books (6-12), solutions, exemplars, addictive games, and connect with teachers & students.</p>
+        <div class="hero-buttons">
+            <a href="#books" class="btn btn-primary"><i class="fas fa-book-open"></i> Explore Books</a>
+            <a href="#games" class="btn btn-outline"><i class="fas fa-gamepad"></i> Play Games</a>
+        </div>
+        <div class="hero-note"><i class="fas fa-check-circle"></i> Books directly from <strong>ncert.nic.in</strong> (Free & Legal)</div>
+        <div class="hero-stats">
+            <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-label">Happy Learners</div></div>
+            <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">NCERT Books</div></div>
+            <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Fun Games</div></div>
+        </div>
+    </section>
+
+    <!-- BOOKS SECTION -->
+    <section class="section" id="books">
+        <div class="section-header"><div class="tag">📘 NCERT Library</div><h2>Explore Books by Class</h2></div>
+        <div class="class-selector" id="classSelector">
+            <button class="class-btn active" data-class="6">Class 6</button>
+            <button class="class-btn" data-class="7">Class 7</button>
+            <button class="class-btn" data-class="8">Class 8</button>
+            <button class="class-btn" data-class="9">Class 9</button>
+            <button class="class-btn" data-class="10">Class 10</button>
+            <button class="class-btn" data-class="11">Class 11</button>
+            <button class="class-btn" data-class="12">Class 12</button>
+        </div>
+        <div class="subject-grid" id="subjectGrid"></div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="section" id="solutions">
+        <div class="section-header"><div class="tag">✅ NCERT Solutions</div><h2>Chapter-wise Solutions</h2></div>
+        <div class="class-selector" id="solClassSelector">
+            <button class="class-btn active" data-class="9">Class 9</button>
+            <button class="class-btn" data-class="10">Class 10</button>
+            <button class="class-btn" data-class="11">Class 11</button>
+            <button class="class-btn" data-class="12">Class 12</button>
+        </div>
+        <div class="accordion" id="solutionsAccordion"></div>
+    </section>
+
+    <!-- EXEMPLAR -->
+    <section class="section" id="exemplar">
+        <div class="section-header"><div class="tag">⭐ NCERT Exemplar</div><h2>Exemplar Problems & Solutions</h2></div>
+        <div class="book-list" id="exemplarList"></div>
+    </section>
+
+    <!-- QUIZZES -->
+    <section class="section" id="quizzes">
+        <div class="section-header"><div class="tag">🎯 Quiz Zone</div><h2>Test Your Knowledge</h2></div>
+        <div class="quiz-card"><div id="quizContent"></div><div id="quizResult"></div></div>
+    </section>
+
+    <!-- GAMES SECTION -->
+    <section class="section" id="games">
+        <div class="section-header"><div class="tag">🎮 Game Zone</div><h2>Fun & Addictive Games</h2><p>Take a break! Play these hilarious games and challenge your friends.</p></div>
+        <div class="games-grid">
+            <div class="game-card" onclick="startGame('numberguess')">
+                <i class="fas fa-question-circle"></i><h4>Number Guessing</h4><p>Guess the secret number between 1-100. Hilarious hints!</p>
+            </div>
+            <div class="game-card" onclick="startGame('reaction')">
+                <i class="fas fa-bolt"></i><h4>Reaction Time</h4><p>How fast can you click? Test your reflexes!</p>
+            </div>
+            <div class="game-card" onclick="startGame('funnyquiz')">
+                <i class="fas fa-laugh"></i><h4>Funny Trivia</h4><p>Answer silly questions and laugh out loud!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCUSSION -->
+    <section class="section" id="discussion">
+        <div class="section-header"><div class="tag">💬 Community Hub</div><h2>Discussion & Doubts</h2></div>
+        <div class="discussion-area">
+            <div id="loginPrompt" style="text-align:center;margin-bottom:16px;display:none;">
+                <p>Please <a href="#" onclick="openAuthModal()" style="color:var(--accent);font-weight:600;">log in</a> to chat.</p>
+            </div>
+            <div id="discussionForm" style="display:none;">
+                <div class="comment-box">
+                    <textarea id="commentInput" placeholder="Ask your doubt..."></textarea>
+                    <button class="btn btn-primary" id="postCommentBtn"><i class="fas fa-paper-plane"></i> Post</button>
+                </div>
+                <p>Posting as <strong id="postingAsName"></strong> (<span id="postingAsRole"></span>)</p>
+            </div>
+            <div id="commentsList">Loading...</div>
+        </div>
+    </section>
+
+    <!-- SOCIAL COMMUNITY SECTION -->
+    <div class="social-section" id="community">
+        <div class="section-header"><div class="tag">🔗 Join Our Community</div><h2>Follow, Subscribe & Stay Connected!</h2><p>Be a part of the AP SKILLS family. Get exclusive study tips, fun updates, and behind-the-scenes!</p></div>
+        <div class="social-grid">
+            <div class="social-card">
+                <i class="fab fa-youtube"></i>
+                <h4>YouTube</h4>
+                <p>Subscribe for NCERT explainers, live classes & fun shorts.</p>
+                <a href="https://www.youtube.com/@Ahtasham-vault" target="_blank" class="social-btn">🔥 Subscribe Now</a>
+            </div>
+            <div class="social-card">
+                <i class="fab fa-instagram"></i>
+                <h4>Instagram</h4>
+                <p>Follow for daily quizzes, memes, and motivation.</p>
+                <a href="https://www.instagram.com/ahtashamvault?igsh=MWRibXJ1ZjNjcTMyMw==" target="_blank" class="social-btn">📸 Follow Us</a>
+            </div>
+            <div class="social-card">
+                <i class="fab fa-telegram"></i>
+                <h4>Telegram</h4>
+                <p>Join for free PDFs, updates, and community chat.</p>
+                <a href="https://t.me/pw_pipro8051" target="_blank" class="social-btn">💬 Join Channel</a>
+            </div>
+        </div>
+        <p style="margin-top:30px; font-weight:600;">❤️ Your support means the world to <strong style="color:var(--accent2);">Ahtasham Perwez</strong>. Let's build the biggest learning community!</p>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="section-header"><div class="tag">🌟 Student Love</div><h2>What Learners Say</h2></div>
+        <div class="testimonial-scroll">
+            <div class="testimonial-card"><p>"Best NCERT site ever! Books open instantly, and the games are super addictive. I solved the number guessing in 3 attempts!"</p><div class="author">Riya Sharma</div><div class="role">Class 10 Student</div></div>
+            <div class="testimonial-card"><p>"As a teacher, I love the discussion forum. My students and I share doubts easily. Plus the reaction game is hilarious!"</p><div class="author">Mr. Gupta</div><div class="role">Science Teacher</div></div>
+            <div class="testimonial-card"><p>"AP SKILLS is a lifesaver! All NCERT books in one place, and the funny quiz made my day. Subscribed to the YouTube channel too!"</p><div class="author">Arjun Patel</div><div class="role">Class 9 Student</div></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <h4>AP SKILLS</h4>
+                <p>Premium NCERT learning platform. Developed with ❤️ by <strong style="color:var(--accent);">Ahtasham Perwez</strong>.</p>
+                <p style="font-size:0.8rem;margin-top:8px;">📧 hello@apskills.com</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#books">NCERT Books</a><a href="#solutions">Solutions</a>
+                <a href="#exemplar">Exemplar</a><a href="#games">Games</a>
+            </div>
+            <div>
+                <h4>Community Resources</h4>
+                <a href="https://ncert.nic.in" target="_blank">Official NCERT</a>
+                <a href="https://cbse.gov.in" target="_blank">CBSE Website</a>
+                <a href="#" onclick="alert('Sample papers coming soon!')">CBSE Sample Papers</a>
+                <a href="#" onclick="alert('Stay tuned for study notes!')">Free Study Notes</a>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <a href="#" onclick="alert('Privacy Policy: We do not share your data.')">Privacy Policy</a>
+                <a href="#" onclick="alert('Terms of Service: Use for educational purposes only.')">Terms of Service</a>
+                <a href="#" onclick="alert('Disclaimer: NCERT books are property of NCERT, used here for educational convenience.')">Disclaimer</a>
+                <a href="#" onclick="alert('DMCA: Contact us for any copyright concerns.')">DMCA</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AP SKILLS | Made with dedication by Ahtasham Perwez | Free for all learners
+        </div>
+    </footer>
+
+    <!-- AUTH MODAL -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="close-btn" id="closeAuthModalBtn">&times;</button>
+            <div class="modal-tabs"><div class="modal-tab active" data-tab="login">Log In</div><div class="modal-tab" data-tab="signup">Sign Up</div></div>
+            <form id="authForm"><div id="authFields"></div><button type="submit" class="btn btn-primary" style="width:100%;">Submit</button></form>
+        </div>
+    </div>
+
+    <!-- GAME MODAL -->
+    <div class="modal-overlay" id="gameModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeGameModal()">&times;</button>
+            <div id="gameContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ─── AUTH (localStorage) ───
+        const AUTH_KEY='apskills_user';
+        function getCurrentUser(){ return JSON.parse(localStorage.getItem(AUTH_KEY)||'null'); }
+        function setCurrentUser(user){ localStorage.setItem(AUTH_KEY,JSON.stringify(user)); updateNavbar(); updateDiscussionForm(); }
+        function logout(){ localStorage.removeItem(AUTH_KEY); updateNavbar(); updateDiscussionForm(); }
+        function escapeHTML(str){ const d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
+        let authTab='login';
+        function openAuthModal(){ document.getElementById('authModal').classList.add('show'); renderAuthForm(); }
+        function closeAuthModal(){ document.getElementById('authModal').classList.remove('show'); }
+        function renderAuthForm(){
+            const f=document.getElementById('authFields');
+            if(authTab==='login') f.innerHTML=`<div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div><div class="form-group"><label>Password</label><input type="password" id="loginPassword"></div>`;
+            else f.innerHTML=`<div class="form-group"><label>Name</label><input type="text" id="signupName"></div><div class="form-group"><label>Email</label><input type="email" id="signupEmail"></div><div class="form-group"><label>Password</label><input type="password" id="signupPassword"></div><div class="form-group"><label>Role</label><select id="signupRole"><option value="student">Student</option><option value="teacher">Teacher</option></select></div>`;
+        }
+        function handleAuthSubmit(e){
+            e.preventDefault();
+            if(authTab==='login'){
+                const em=document.getElementById('loginEmail').value.trim(), pw=document.getElementById('loginPassword').value.trim();
+                const users=JSON.parse(localStorage.getItem('apskills_users')||'[]');
+                const user=users.find(u=>u.email===em && u.password===pw);
+                if(user){ setCurrentUser({name:user.name,email:user.email,role:user.role}); closeAuthModal(); alert('Welcome back, '+user.name+'!'); }
+                else alert('Invalid credentials. Please sign up.');
+            } else {
+                const name=document.getElementById('signupName').value.trim(), em=document.getElementById('signupEmail').value.trim(),
+                    pw=document.getElementById('signupPassword').value.trim(), role=document.getElementById('signupRole').value;
+                if(!name||!em||!pw) return alert('Fill all fields.');
+                const users=JSON.parse(localStorage.getItem('apskills_users')||'[]');
+                if(users.some(u=>u.email===em)) return alert('Email already registered.');
+                users.push({name,email:em,password:pw,role});
+                localStorage.setItem('apskills_users',JSON.stringify(users));
+                setCurrentUser({name,email:em,role}); closeAuthModal(); alert('Account created! Welcome, '+name+'!');
+            }
+        }
+        function updateNavbar(){
+            const user=getCurrentUser();
+            const area=document.getElementById('userArea');
+            area.innerHTML=user?`<span class="nav-user"><i class="fas fa-user-circle"></i> ${escapeHTML(user.name)} <button class="logout-btn" onclick="logout()">Logout</button></span>`
+                :`<a href="#" class="nav-cta" onclick="openAuthModal()"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>`;
+        }
+        function updateDiscussionForm(){
+            const user=getCurrentUser();
+            document.getElementById('discussionForm').style.display=user?'block':'none';
+            document.getElementById('loginPrompt').style.display=user?'none':'block';
+            if(user){ document.getElementById('postingAsName').textContent=user.name; document.getElementById('postingAsRole').textContent=user.role==='teacher'?'Teacher':'Student'; }
+        }
+
+        // ─── NCERT BOOKS ───
+        const ncertTextbookCodes={6:{'Mathematics':'iemh1','Science':'iesc1','English (Honeysuckle)':'iehs1'},7:{'Mathematics':'iemh2','Science':'iesc2'},8:{'Mathematics':'iemh3','Science':'iesc3'},9:{'Mathematics':'iemh4','Science':'iesc4','English (Beehive)':'iebe1'},10:{'Mathematics':'iemh5','Science':'iesc5','English (First Flight)':'ieff1'}};
+        function openNcertBook(cls,subject){
+            const codes=ncertTextbookCodes[cls]||{};
+            const code=codes[subject];
+            if(code) window.open(`https://ncert.nic.in/textbook.php?${code}=0-15`,'_blank');
+            else window.open(`https://ncert.nic.in/textbook.php?class=${cls}`,'_blank');
+        }
+        function openNcertExemplar(cls,sub){ window.open(`https://ncert.nic.in/exemplar-problems.php?class=${cls}&subject=${encodeURIComponent(sub.replace(' Exemplar',''))}`,'_blank'); }
+
+        const subjectsByClass={6:['Mathematics','Science','Social Science','English (Honeysuckle)','Hindi (Vasant)'],7:['Mathematics','Science','Social Science','English (Honeycomb)','Hindi (Vasant)'],8:['Mathematics','Science','Social Science','English (Honeydew)','Hindi (Vasant)'],9:['Mathematics','Science','Social Science','English (Beehive)','Hindi (Kshitij)'],10:['Mathematics','Science','Social Science','English (First Flight)','Hindi (Kshitij)'],11:['Physics','Chemistry','Mathematics','Biology','English (Hornbill)'],12:['Physics','Chemistry','Mathematics','Biology','English (Flamingo)']};
+        const subjectIcons={Mathematics:'icon-maths',Science:'icon-science','Social Science':'icon-sst',English:'icon-english',Hindi:'icon-hindi',Physics:'icon-physics',Chemistry:'icon-chemistry',Biology:'icon-biology'};
+        function getIconClass(s){ for(let k in subjectIcons) if(s.includes(k)) return subjectIcons[k]; return 'icon-maths'; }
+        function getIconLetter(s){ if(s.includes('Math')) return 'M'; if(s.includes('Sci')) return 'S'; if(s.includes('Soc')) return 'SS'; if(s.includes('Eng')) return 'E'; if(s.includes('Hin')) return 'ह'; if(s.includes('Phy')) return 'P'; if(s.includes('Chem')) return 'C'; if(s.includes('Bio')) return 'B'; return '?'; }
+        function renderSubjects(cls){
+            document.getElementById('subjectGrid').innerHTML=subjectsByClass[cls].map(s=>`
+                <div class="subject-card" onclick="openNcertBook(${cls},'${s}')">
+                    <div class="icon ${getIconClass(s)}">${getIconLetter(s)}</div><h4>${s}</h4><span class="badge">Class ${cls}</span>
+                </div>`).join('');
+        }
+
+        // ─── SOLUTIONS ───
+        const solData={9:[{ch:'Chapter 1: Number Systems',sol:'Step-by-step solutions...'},{ch:'Chapter 2: Polynomials',sol:'Zeroes and factorisation...'}],10:[{ch:'Chapter 1: Real Numbers',sol:'Euclid lemma & HCF...'}],11:[{ch:'Chapter 1: Sets',sol:'Union, intersection...'}],12:[{ch:'Chapter 1: Relations',sol:'Types of relations...'}]};
+        function renderSolutions(cls){
+            const data=solData[cls]||solData[9];
+            document.getElementById('solutionsAccordion').innerHTML=data.map((it,i)=>`
+                <div class="accordion-item" id="accItem${i}">
+                    <div class="accordion-header" onclick="toggleAcc(${i})"><span>${it.ch}</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="accordion-body">${it.sol}</div>
+                </div>`).join('');
+        }
+        function toggleAcc(i){ const el=document.getElementById('accItem'+i); if(el){ const was=el.classList.contains('open'); document.querySelectorAll('.accordion-item').forEach(e=>e.classList.remove('open')); if(!was) el.classList.add('open'); } }
+
+        // ─── EXEMPLAR ───
+        const exemplarData=[{cls:9,sub:'Mathematics Exemplar',cover:'cover-blue',desc:'Advanced problems'},{cls:9,sub:'Science Exemplar',cover:'cover-green',desc:'Conceptual'},{cls:10,sub:'Mathematics Exemplar',cover:'cover-blue',desc:'HOTS'},{cls:10,sub:'Science Exemplar',cover:'cover-green',desc:'Application'},{cls:11,sub:'Physics Exemplar',cover:'cover-purple',desc:'Numerical'},{cls:12,sub:'Chemistry Exemplar',cover:'cover-teal',desc:'Reactions'}];
+        function renderExemplars(){ document.getElementById('exemplarList').innerHTML=exemplarData.map(e=>`<div class="book-item" onclick="openNcertExemplar(${e.cls},'${e.sub}')"><div class="book-cover ${e.cover}">EX</div><div class="book-info"><h5>${e.sub}</h5><p>Class ${e.cls}</p><span class="tag-sm">${e.desc}</span></div></div>`).join(''); }
+
+        // ─── QUIZ ───
+        const quizQ=[{q:'√144?',opts:['10','11','12','14'],ans:2},{q:'Largest planet?',opts:['Earth','Mars','Jupiter','Saturn'],ans:2},{q:'Water symbol?',opts:['O₂','CO₂','H₂O','NaCl'],ans:2},{q:'National anthem writer?',opts:['Gandhi','Tagore','Bose','Chatterjee'],ans:1},{q:'15% of 200?',opts:['20','25','30','35'],ans:2}];
+        let qi=0,score=0,done=false;
+        function renderQuiz(){
+            if(done){ const p=Math.round(score/quizQ.length*100); document.getElementById('quizContent').innerHTML=`<h3>🎉 Quiz Complete!</h3><div class="quiz-score ${p>=60?'score-pass':'score-fail'}">${score}/${quizQ.length} (${p}%)</div>`; document.getElementById('quizResult').innerHTML='<button class="btn btn-primary" onclick="resetQuiz()">Retake</button>'; return; }
+            const q=quizQ[qi];
+            document.getElementById('quizContent').innerHTML=`<div class="quiz-question">Q${qi+1}. ${q.q}</div><div class="quiz-options">${q.opts.map((o,i)=>`<label><input type="radio" name="qz" value="${i}" onchange="document.getElementById('subBtn').disabled=false"> ${o}</label>`).join('')}</div>`;
+            document.getElementById('quizResult').innerHTML=`<button class="btn btn-primary" id="subBtn" disabled onclick="subQuiz()">Submit</button><p>${qi+1}/${quizQ.length}</p>`;
+        }
+        function subQuiz(){ const sel=document.querySelector('input[name="qz"]:checked'); if(sel && parseInt(sel.value)===quizQ[qi].ans) score++; qi++; if(qi>=quizQ.length) done=true; renderQuiz(); }
+        function resetQuiz(){ qi=0; score=0; done=false; renderQuiz(); }
+
+        // ─── COMMENTS ───
+        function loadComments(){ const c=JSON.parse(localStorage.getItem('apskills_comments')||'[]'); document.getElementById('commentsList').innerHTML=c.length?c.map(x=>`<div class="comment-item"><span class="author">${escapeHTML(x.name)}</span><span class="role-tag ${x.role}">${x.role==='teacher'?'👩‍🏫 Teacher':'🧑‍🎓 Student'}</span><p>${escapeHTML(x.text)}</p><div class="time">${x.time}</div></div>`).join(''):'<p>No comments yet. Be the first!</p>'; }
+        function postComment(){ const user=getCurrentUser(); if(!user) return alert('Login first!'); const txt=document.getElementById('commentInput').value.trim(); if(!txt) return; const arr=JSON.parse(localStorage.getItem('apskills_comments')||'[]'); arr.unshift({name:user.name,role:user.role,text:txt,time:new Date().toLocaleString('en-IN')}); if(arr.length>100) arr.length=100; localStorage.setItem('apskills_comments',JSON.stringify(arr)); document.getElementById('commentInput').value=''; loadComments(); }
+
+        // ─── GAMES ───
+        function startGame(type){ document.getElementById('gameModal').classList.add('show'); const gc=document.getElementById('gameContent');
+            if(type==='numberguess'){
+                const secret=Math.floor(Math.random()*100)+1; let attempts=0;
+                gc.innerHTML=`<h3>🔢 Guess the Number (1-100)</h3><input id="guessInput" type="number" min="1" max="100" class="form-group" style="width:100%;"><button class="btn btn-primary" id="guessBtn">Guess</button><p id="hint"></p><p id="attempts">Attempts: 0</p><button class="btn btn-outline" id="restartGuess">New Game</button>`;
+                document.getElementById('guessBtn').onclick=()=>{ const g=parseInt(document.getElementById('guessInput').value); if(isNaN(g)) return; attempts++; document.getElementById('attempts').textContent='Attempts: '+attempts; if(g===secret){ document.getElementById('hint').innerHTML='🎉 Correct! The number was '+secret; document.getElementById('guessBtn').disabled=true; } else { document.getElementById('hint').innerHTML=g<secret?'📈 Too low!':'📉 Too high!'; } };
+                document.getElementById('restartGuess').onclick=()=>startGame('numberguess');
+            } else if(type==='reaction'){
+                let timer,startTime,state='wait'; // waiting, ready, clicked
+                gc.innerHTML=`<h3>⚡ Reaction Time Test</h3><p id="reactionMsg">Click "Start" then wait for green...</p><button class="btn btn-primary" id="reactBtn">Start</button><p id="reactResult"></p>`;
+                const btn=document.getElementById('reactBtn'), msg=document.getElementById('reactionMsg'), res=document.getElementById('reactResult');
+                btn.onclick=()=>{
+                    if(state==='wait'){ state='ready'; btn.textContent='Wait...'; btn.disabled=true; msg.textContent='Wait for green...';
+                        const delay=1000+Math.random()*3000;
+                        timer=setTimeout(()=>{ state='click'; btn.style.background='#2d9d5a'; btn.textContent='CLICK NOW!'; btn.disabled=false; startTime=Date.now(); },delay);
+                    } else if(state==='click'){ const rt=Date.now()-startTime; res.textContent=`Your reaction time: ${rt} ms`; btn.style.background=''; btn.textContent='Restart'; state='done'; btn.onclick=()=>{startGame('reaction');}; }
+                    else if(state==='done') startGame('reaction');
+                };
+            } else if(type==='funnyquiz'){
+                const fq=[{q:'What is the tallest building in the world?',opts:['Burj Khalifa','Eiffel Tower','My ego','A giraffe on stilts'],ans:0},{q:'How many months have 28 days?',opts:['1','12','February','Depends on leap year'],ans:1},{q:'What is the chemical formula of water?',opts:['H2O','Blue juice','Wet stuff','H2O (but funnier)'],ans:0}]; let fqi=0,fscore=0,fdone=false;
+                function renderFQ(){ if(fdone){ gc.innerHTML=`<h3>😂 Quiz Complete!</h3><p>You scored ${fscore}/${fq.length}</p><button class="btn btn-primary" onclick="startGame('funnyquiz')">Play Again</button>`; return; } const q=fq[fqi]; gc.innerHTML=`<h3>${q.q}</h3>${q.opts.map((o,i)=>`<button class="btn btn-outline" style="display:block;width:100%;margin:6px 0;" onclick="answerFQ(${i})">${o}</button>`).join('')}`; }
+                window.answerFQ=function(i){ if(i===fq[fqi].ans) fscore++; fqi++; if(fqi>=fq.length) fdone=true; renderFQ(); };
+                renderFQ();
+            }
+        }
+        function closeGameModal(){ document.getElementById('gameModal').classList.remove('show'); }
+
+        // ─── EVENT LISTENERS ───
+        document.querySelectorAll('#classSelector .class-btn').forEach(b=>b.addEventListener('click',function(){ document.querySelectorAll('#classSelector .class-btn').forEach(x=>x.classList.remove('active')); this.classList.add('active'); renderSubjects(parseInt(this.dataset.class)); }));
+        document.querySelectorAll('#solClassSelector .class-btn').forEach(b=>b.addEventListener('click',function(){ document.querySelectorAll('#solClassSelector .class-btn').forEach(x=>x.classList.remove('active')); this.classList.add('active'); renderSolutions(parseInt(this.dataset.class)); }));
+        document.getElementById('postCommentBtn').addEventListener('click',postComment);
+        document.getElementById('closeAuthModalBtn').addEventListener('click',closeAuthModal);
+        document.getElementById('authModal').addEventListener('click',e=>{if(e.target===document.getElementById('authModal')) closeAuthModal();});
+        document.querySelectorAll('.modal-tab').forEach(t=>t.addEventListener('click',function(){ document.querySelectorAll('.modal-tab').forEach(x=>x.classList.remove('active')); this.classList.add('active'); authTab=this.dataset.tab; renderAuthForm(); }));
+        document.getElementById('authForm').addEventListener('submit',handleAuthSubmit);
+        document.getElementById('mobileMenuBtn').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('show'));
+        document.querySelectorAll('#navLinks a').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('show')));
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){ closeAuthModal(); closeGameModal(); }});
+
+        // ─── INIT ───
+        function init(){ renderSubjects(6); renderSolutions(9); renderExemplars(); renderQuiz(); loadComments(); updateNavbar(); updateDiscussionForm(); }
+        init();
+    </script>
+</body>
+</html>
